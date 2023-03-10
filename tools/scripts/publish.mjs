@@ -7,7 +7,9 @@
  * You might need to authenticate with NPM before running this script.
  */
 
-import { readCachedProjectGraph } from '@nrwl/devkit';
+import pkg from '@nrwl/devkit';
+const { readCachedProjectGraph } = pkg;
+
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import chalk from 'chalk';
@@ -21,7 +23,7 @@ function invariant(condition, message) {
 
 // Executing publish script: node path/to/publish.mjs {name} --version {version} --tag {tag}
 // Default "tag" to "next" so we won't publish the "latest" tag by accident.
-const [, , name, version, tag = 'next'] = process.argv;
+const [, , name, version, tag = 'next', otp] = process.argv;
 
 // A simple SemVer validation to validate the version
 const validVersion = /^\d+\.\d+\.\d+(-\w+\.\d+)?/;
@@ -58,4 +60,4 @@ try {
 }
 
 // Execute "npm publish" to publish
-execSync(`npm publish --access public --tag ${tag}`);
+execSync(`npm publish --access public --tag ${tag} --otp ${otp}`);

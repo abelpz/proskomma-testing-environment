@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "proskomma-core": ["libs/pk-core/src/index.js"]
+      "proskomma-cross": ["libs/pk-core/src/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]
